@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Baidu Goddess</title>
+        <script type="text/javascript">
+            function getOriginPic(obj){
+               console.log(obj.src)
+               window.open(obj.src);
+            }
+        </script>
+    </head>
+    <body>
+       <ul>
+            {% for index in range(len(result_data)) %}
+                <li>
+                    <div>
+                        <h2>第{{index+1}}名</h2>
+                        <h1>{{result_data[index].floorNum}}</h1>
+                        <p>点赞数为{{result_data[index].likedNum}}</p>
+                        <h1>{{result_data[index].userInformation}}</h1>
+                        {% for indicate in range(len(result_data[index].img_urls)) %}
+                            <img style="width:400px;height:300px;cursor:pointer;" onclick="getOriginPic(this);" src={{result_data[index].img_urls[indicate]}}>
+                        {% end %}
+                    </div>
+                </li>
+            {% end %}
+        </ul>
+    </body>
+</html>
